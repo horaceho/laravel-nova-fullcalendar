@@ -1,7 +1,7 @@
 ## About Laravel Nova Fullcalender
 Laravel Nova Fullcalender is an event calendar built from Laravel Nova Tool.
 
-![Laravel Nova Fullcalender](https://raw.githubusercontent.com/horaceho/laravel-fullcalendar/master/resources/images/nova-fullcalendar.png)
+![Laravel Nova Fullcalender](https://raw.githubusercontent.com/horaceho/laravel-nova-fullcalendar/a4c60c4d50bbe1d575f350b2f379427abb67b01b/resources/images/nova-fullcalendar.png)
 
 ## Getting Start
 Create a new Laravel application with Laravel Nova following the instructions on offical websites:
