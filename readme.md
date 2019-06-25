@@ -98,8 +98,9 @@ Get rid of the ````ajv@^6.0.0```` warning:
 ````
 npm install ajv@^6.0.0 --save
 ````
-Auto-compile the assets:
+Change to the tool folder, and auto-compile the assets:
 ````
+cd nova-components/Fullcalendar
 npm run watch
 ````
 Import Calendar in ````nova-components/Fullcalendar/resources/js/tool.js````:
