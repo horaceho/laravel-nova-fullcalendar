@@ -93,6 +93,8 @@ Install a calendar module, we pick [@fullcalendar/vue](https://fullcalendar.io/d
 npm install --save @fullcalendar/vue
 npm install --save @fullcalendar/core
 npm install --save @fullcalendar/daygrid
+npm install --save @fullcalendar/timegrid
+npm install --save @fullcalendar/interaction
 ````
 Get rid of the ````ajv@^6.0.0```` warning:
 ````
@@ -120,10 +122,19 @@ Display calendar in ````nova-components/Fullcalendar/resources/js/components/Too
 <template>
     <div>
         <FullCalendar 
-            ref="fullCalendar" 
+            @dateClick="handleDateClick"
+            @eventClick="handleEventClick"
+            @eventMouseEnter="handleLeaveEnter"
+            @eventMouseLeave="handleMouseLeave"
+            ref="fullCalendar"
             :plugins="calendarPlugins"
             :weekends="calendarWeekends"
             :events="calendarEvents"
+            :header="{
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,listWeek'
+            }"
         />
     </div>
 </template>
@@ -132,15 +143,33 @@ Display calendar in ````nova-components/Fullcalendar/resources/js/components/Too
 
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
 export default {
     components: {
         FullCalendar
     },
+    methods: {
+        handleDateClick(info) {
+            console.log(info);
+        },
+        handleEventClick(info) {
+            console.log(info);
+        },
+        handleLeaveEnter(info) {
+            console.log(info);
+        },
+        handleMouseLeave(info) {
+            console.log(info);
+        },
+    },
     data() {
         return {
             calendarPlugins: [
-                dayGridPlugin
+                dayGridPlugin,
+                timeGridPlugin,
+                interactionPlugin
             ],
             calendarWeekends: true,
             calendarEvents: [
@@ -171,6 +200,7 @@ export default {
 <style>
 @import "~@fullcalendar/core/main.css";
 @import "~@fullcalendar/daygrid/main.css";
+@import "~@fullcalendar/timegrid/main.css";
 </style>
 
 ````
