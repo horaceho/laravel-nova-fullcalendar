@@ -3,7 +3,7 @@
         <FullCalendar 
             @dateClick="handleDateClick"
             @eventClick="handleEventClick"
-            @eventMouseEnter="handleLeaveEnter"
+            @eventMouseEnter="handleMouseEnter"
             @eventMouseLeave="handleMouseLeave"
             ref="fullCalendar"
             :plugins="calendarPlugins"
@@ -36,7 +36,7 @@ export default {
         handleEventClick(info) {
             console.log(info);
         },
-        handleLeaveEnter(info) {
+        handleMouseEnter(info) {
             console.log(info);
         },
         handleMouseLeave(info) {
