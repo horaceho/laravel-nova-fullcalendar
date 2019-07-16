@@ -5,6 +5,7 @@
             @eventClick="handleEventClick"
             @eventMouseEnter="handleMouseEnter"
             @eventMouseLeave="handleMouseLeave"
+            @eventRender="handleEventRender"
             ref="fullCalendar"
             :plugins="calendarPlugins"
             :weekends="calendarWeekends"
@@ -24,6 +25,8 @@ import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import Vue from 'vue';
+import Tooltip from 'tooltip.js';
 
 export default {
     components: {
@@ -41,10 +44,22 @@ export default {
         },
         handleMouseLeave(info) {
             console.log(info);
+            this.tooltip = null;
         },
+        handleEventRender(info) {
+            console.log(info);
+            this.tooltip = new Tooltip(info.el, {
+                title: info.event.title,
+                placement: 'top',
+                trigger: 'hover',
+                html: true
+                // container: 'body'
+            });
+        }
     },
     data() {
         return {
+            tooltip: null,
             calendarPlugins: [
                 dayGridPlugin,
                 timeGridPlugin,
